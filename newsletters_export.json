@@ -1,10 +1,50 @@
 [
   {
-    "id": "1",
-    "title": "Weekly Regulatory Update",
-    "content": "This week's regulatory updates and insights",
-    "send_date": "2025-08-21T18:48:01.163Z",
-    "status": "sent",
-    "created_at": "2025-08-21T18:48:01.163Z"
+    "id": "nl_001",
+    "title": "FDA Genehmigt 47 Neue Medizinprodukte im Q3 2024",
+    "content": "Die FDA hat im dritten Quartal 2024 insgesamt 47 neue Medizinprodukte durch das 510(k)-Verfahren genehmigt. Besonders hervorzuheben sind innovative KI-gestützte Diagnosesysteme und robotergestützte Chirurgiegeräte.",
+    "html_content": null,
+    "status": "approved",
+    "scheduled_for": null,
+    "sent_at": null,
+    "created_by_id": null,
+    "subscriber_count": 47,
+    "created_at": "2025-08-06 13:35:22.772945"
+  },
+  {
+    "id": "nl_002",
+    "title": "EU MDR: Neue Übergangsfristen für Legacy-Geräte",
+    "content": "Die Europäische Kommission hat erweiterte Übergangsfristen für bestehende Medizinprodukte unter der MDR bekannt gegeben. Hersteller erhalten zusätzliche 12 Monate für die Compliance-Umsetzung.",
+    "html_content": null,
+    "status": "approved",
+    "scheduled_for": null,
+    "sent_at": null,
+    "created_by_id": null,
+    "subscriber_count": 89,
+    "created_at": "2025-08-06 13:35:22.772945"
+  },
+  {
+    "id": "nl_003",
+    "title": "HeartFlow FFR-CT revolutioniert Kardiodiagnostik",
+    "content": "HeartFlows nicht-invasive FFR-CT-Technologie wurde von der FDA für die Diagnose von Koronararterienerkrankungen zugelassen. Die KI-basierte Lösung revolutioniert die kardiovaskuläre Bildgebung.",
+    "html_content": null,
+    "status": "approved",
+    "scheduled_for": null,
+    "sent_at": null,
+    "created_by_id": null,
+    "subscriber_count": 34,
+    "created_at": "2025-08-06 13:35:22.772945"
+  },
+  {
+    "id": "nl_004",
+    "title": "ISO 13485:2024 - Neue Qualitätsstandards veröffentlicht",
+    "content": "Die neue Version der ISO 13485 für Qualitätsmanagementsysteme wurde veröffentlicht. Wichtige Neuerungen betreffen Risikomanagement und Software-Validierung.",
+    "html_content": null,
+    "status": "approved",
+    "scheduled_for": null,
+    "sent_at": null,
+    "created_by_id": null,
+    "subscriber_count": 52,
+    "created_at": "2025-08-06 13:35:22.772945"
   }
 ]
