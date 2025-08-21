@@ -1,0 +1,80 @@
+[
+  {
+    "id": "kb_fda_guidance_2025",
+    "title": "FDA Medical Device Guidance Documents 2025",
+    "category": "regulatory_guidance",
+    "source": "FDA.gov",
+    "url": "https://www.fda.gov/medical-devices/guidance-documents-medical-devices-and-radiation-emitting-products/recent-final-medical-device-guidance-documents",
+    "summary": "Comprehensive list of recent final medical device guidance documents from FDA",
+    "content": "This resource provides the most current FDA guidance documents for medical device manufacturers, covering approval processes, compliance requirements, and regulatory best practices.",
+    "tags": ["FDA", "guidance", "medical-devices", "compliance"],
+    "extractedFrom": "FDA information platform email",
+    "dateExtracted": "2025-08-21",
+    "relevanceScore": 95
+  },
+  {
+    "id": "kb_ecfr_guidance_practices",
+    "title": "21 CFR 10.115 - Good Guidance Practices",
+    "category": "legal_framework",
+    "source": "eCFR",
+    "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-10/subpart-B/section-10.115",
+    "summary": "Legal framework for FDA guidance document development and implementation",
+    "content": "Federal regulation defining how FDA develops, issues, and maintains guidance documents for the medical device industry.",
+    "tags": ["CFR", "legal", "guidance-practices", "FDA"],
+    "extractedFrom": "FDA information platform email",
+    "dateExtracted": "2025-08-21",
+    "relevanceScore": 88
+  },
+  {
+    "id": "kb_intertek_standards_mgmt",
+    "title": "i2i Standards Management Platform",
+    "category": "standards_management",
+    "source": "Intertek Inform",
+    "url": "https://www.intertekinform.com/en-us/standards-management/",
+    "summary": "Cloud-based platform managing 1.6M standards from 360+ publishers including ISO, IEC, IEEE, ANSI",
+    "content": "Comprehensive standards management solution featuring redline tracking, alert services, and collaborative document management for technical standards compliance.",
+    "tags": ["standards", "ISO", "IEC", "IEEE", "ANSI", "redlines"],
+    "extractedFrom": "Standards und Redline standards email",
+    "dateExtracted": "2025-08-21",
+    "relevanceScore": 92
+  },
+  {
+    "id": "kb_emergo_regulatory_watch",
+    "title": "Emergo by UL Regulatory Watch",
+    "category": "regulatory_intelligence",
+    "source": "Emergo by UL",
+    "url": "https://www.emergobyul.com/software/regulatory-affairs-management-suite/regulatory-watch",
+    "summary": "Regulatory intelligence tool for tracking medical device regulations across multiple countries",
+    "content": "Professional regulatory affairs management suite providing multi-country medical device information, compliance tracking, and regulatory updates.",
+    "tags": ["regulatory-intelligence", "multi-country", "medtech", "compliance"],
+    "extractedFrom": "FDA information platform email",
+    "dateExtracted": "2025-08-21",
+    "relevanceScore": 94
+  },
+  {
+    "id": "kb_medicept_2025_regulations",
+    "title": "Top 5 Upcoming FDA and EU Regulations for 2025",
+    "category": "regulatory_forecast",
+    "source": "MEDIcept",
+    "url": "https://www.medicept.com/top-5-upcoming-fda-and-eu-regulations-what-to-know-for-2025/",
+    "summary": "Analysis of key regulatory changes expected in 2025 for medical device industry",
+    "content": "Strategic overview of upcoming regulatory requirements, compliance deadlines, and industry impacts for FDA and EU medical device regulations in 2025.",
+    "tags": ["2025", "regulatory-forecast", "FDA", "EU", "upcoming"],
+    "extractedFrom": "FDA information platform email",
+    "dateExtracted": "2025-08-21",
+    "relevanceScore": 90
+  },
+  {
+    "id": "kb_rams_platform_overview",
+    "title": "RAMS - Regulatory Affairs Management Suite",
+    "category": "regulatory_software",
+    "source": "Emergo by UL",
+    "url": "https://www.emergobyul.com/",
+    "summary": "Comprehensive regulatory compliance management software with digital tools and expert support",
+    "content": "RAMS provides regulatory affairs and quality assurance professionals with digital tools for compliance management, regulatory tracking, and expert guidance from Emergo by UL.",
+    "tags": ["RAMS", "regulatory-software", "compliance", "digital-tools"],
+    "extractedFrom": "Welcome to RAMS emails",
+    "dateExtracted": "2025-08-21",
+    "relevanceScore": 87
+  }
+]

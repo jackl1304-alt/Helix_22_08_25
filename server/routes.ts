@@ -1982,10 +1982,46 @@ ${case_item.court}
         lastIssueDate: '2025-07-15T00:00:00.000Z',
         subscriberCount: 28,
         createdAt: '2025-08-06T16:11:31.877Z'
+      },
+      {
+        id: 'ns_emergo_ul',
+        name: 'Emergo by UL Regulatory Updates',
+        sourceUrl: 'https://www.emergobyul.com/',
+        description: 'Medical device regulatory intelligence from UL experts',
+        frequency: 'weekly',
+        isActive: true,
+        categories: ['regulatory', 'medtech', 'compliance'],
+        lastIssueDate: '2025-08-21T00:00:00.000Z',
+        subscriberCount: 8500,
+        createdAt: '2025-08-21T19:15:00.000Z'
+      },
+      {
+        id: 'ns_rams_alerts',
+        name: 'RAMS Regulatory Alerts',
+        sourceUrl: 'https://www.rams-track.com/',
+        description: 'Real-time regulatory compliance alerts and notifications',
+        frequency: 'daily',
+        isActive: true,
+        categories: ['regulatory', 'alerts', 'compliance'],
+        lastIssueDate: '2025-08-21T00:00:00.000Z',
+        subscriberCount: 2340,
+        createdAt: '2025-08-21T19:15:00.000Z'
+      },
+      {
+        id: 'ns_intertek_standards',
+        name: 'Intertek i2i Standards Updates',
+        sourceUrl: 'https://www.intertekinform.com/',
+        description: 'Standards management and redline notifications from 360+ publishers',
+        frequency: 'bi-weekly',
+        isActive: true,
+        categories: ['standards', 'iso', 'technical'],
+        lastIssueDate: '2025-08-20T00:00:00.000Z',
+        subscriberCount: 1567,
+        createdAt: '2025-08-21T19:15:00.000Z'
       }
     ];
     
-    console.log(`[Newsletter Sources] Statische Antwort: ${staticNewsletterSources.length} Quellen`);
+    console.log(`[Newsletter Sources] Statische Antwort: ${staticNewsletterSources.length} Quellen (inkl. neue E-Mail-Extrakte)`);
     res.status(200).json(staticNewsletterSources);
   });
 
