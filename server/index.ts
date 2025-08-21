@@ -7,6 +7,7 @@ import tenantRoutes from "./routes/tenant-routes";
 import tenantAuthRoutes from "./routes/tenant-auth-simple";
 import tenantApiRoutes from "./routes/tenant-api";
 import aiSearchRoutes from "./routes/ai-search-routes";
+import newsletterRoutes from "./routes/newsletter-routes";
 import { tenantIsolationMiddleware } from "./middleware/tenant-isolation";
 import { setupVite, log } from "./vite";
 import fs from "fs";
@@ -72,6 +73,9 @@ app.post("/api/ai", async (req: Request, res: Response) => {
     return res.status(500).json({ error: "AI-Service nicht verfügbar." });
   }
 });
+
+// Register Newsletter API routes FIRST to avoid conflicts
+app.use('/api/newsletters', newsletterRoutes);
 
 // Register main routes
 registerRoutes(app);
