@@ -361,7 +361,6 @@ export const tenantDashboardsRelations = relations(tenantDashboards, ({ one }) =
 
 // Types for Multi-Tenant
 export type Tenant = typeof tenants.$inferSelect;
-export type InsertTenant = typeof tenants.$inferInsert;
 export type TenantUser = typeof tenantUsers.$inferSelect;
 export type InsertTenantUser = typeof tenantUsers.$inferInsert;
 export type TenantDashboard = typeof tenantDashboards.$inferSelect;
