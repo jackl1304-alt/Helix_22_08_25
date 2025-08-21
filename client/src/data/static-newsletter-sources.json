@@ -1,0 +1,86 @@
+[
+  {
+    "id": "ns_4304c4b4",
+    "name": "FDA News & Updates",
+    "sourceUrl": "https://www.fda.gov/news-events",
+    "description": "Offizielle Mitteilungen und regulatorische Updates der FDA",
+    "frequency": "weekly",
+    "isActive": true,
+    "categories": ["regulatory", "fda", "compliance"],
+    "lastIssueDate": "2025-08-04T00:00:00.000Z",
+    "subscriberCount": 89,
+    "createdAt": "2025-08-06T16:11:31.877Z"
+  },
+  {
+    "id": "ns_5305d5c5",
+    "name": "EMA Product Management",
+    "sourceUrl": "https://www.ema.europa.eu/en/news",
+    "description": "Europäische Arzneimittel-Agentur Updates",
+    "frequency": "bi-weekly",
+    "isActive": true,
+    "categories": ["regulatory", "ema", "eu"],
+    "lastIssueDate": "2025-08-01T00:00:00.000Z",
+    "subscriberCount": 67,
+    "createdAt": "2025-08-06T16:11:31.877Z"
+  },
+  {
+    "id": "ns_6406e6d6",
+    "name": "MedTech Dive Newsletter",
+    "sourceUrl": "https://www.medtechdive.com/newsletter/",
+    "description": "Daily medtech industry news and analysis",
+    "frequency": "daily",
+    "isActive": true,
+    "categories": ["industry", "medtech", "news"],
+    "lastIssueDate": "2025-08-05T00:00:00.000Z",
+    "subscriberCount": 143,
+    "createdAt": "2025-08-06T16:11:31.877Z"
+  },
+  {
+    "id": "ns_7507f7e7",
+    "name": "MHRA Device Updates",
+    "sourceUrl": "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency",
+    "description": "UK regulatory authority medical device updates",
+    "frequency": "monthly",
+    "isActive": true,
+    "categories": ["regulatory", "mhra", "uk"],
+    "lastIssueDate": "2025-07-28T00:00:00.000Z",
+    "subscriberCount": 45,
+    "createdAt": "2025-08-06T16:11:31.877Z"
+  },
+  {
+    "id": "ns_8608g8f8",
+    "name": "BfArM Mitteilungen",
+    "sourceUrl": "https://www.bfarm.de/",
+    "description": "Deutsche Behörde für Arzneimittel und Medizinprodukte",
+    "frequency": "monthly",
+    "isActive": true,
+    "categories": ["regulatory", "bfarm", "germany"],
+    "lastIssueDate": "2025-07-30T00:00:00.000Z",
+    "subscriberCount": 34,
+    "createdAt": "2025-08-06T16:11:31.877Z"
+  },
+  {
+    "id": "ns_9709h9g9",
+    "name": "Health Canada Updates",
+    "sourceUrl": "https://www.canada.ca/en/health-canada.html",
+    "description": "Canadian health authority regulatory updates",
+    "frequency": "bi-weekly",
+    "isActive": true,
+    "categories": ["regulatory", "health-canada", "canada"],
+    "lastIssueDate": "2025-08-02T00:00:00.000Z",
+    "subscriberCount": 52,
+    "createdAt": "2025-08-06T16:11:31.877Z"
+  },
+  {
+    "id": "ns_0810i0h0",
+    "name": "Swissmedic Newsletter",
+    "sourceUrl": "https://www.swissmedic.ch/",
+    "description": "Swiss Agency for Therapeutic Products updates",
+    "frequency": "quarterly",
+    "isActive": true,
+    "categories": ["regulatory", "swissmedic", "switzerland"],
+    "lastIssueDate": "2025-07-15T00:00:00.000Z",
+    "subscriberCount": 28,
+    "createdAt": "2025-08-06T16:11:31.877Z"
+  }
+]

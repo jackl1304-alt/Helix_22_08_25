@@ -77,65 +77,7 @@ app.post("/api/ai", async (req: Request, res: Response) => {
 // Register Newsletter API routes FIRST to avoid conflicts
 app.use('/api/newsletters', newsletterRoutes);
 
-// Newsletter Sources API route
-app.get('/api/newsletter-sources', async (req, res) => {
-  try {
-    console.log('[Newsletter Sources API] Fetching newsletter sources');
-    
-    // Return newsletter sources from newsletter_sources table or create mock data based on newsletters
-    const newsletters = await sql`SELECT id, title, status, subscriber_count FROM newsletters`;
-    
-    const newsletterSources = newsletters.map(newsletter => ({
-      id: newsletter.id,
-      name: newsletter.title,
-      type: 'internal',
-      status: newsletter.status === 'approved' ? 'active' : 'inactive',
-      subscriberCount: parseInt(newsletter.subscriber_count?.toString() || '0'),
-      lastSync: new Date().toISOString(),
-      source: 'Helix Newsletter System'
-    }));
-
-    // Add some real newsletter sources
-    const externalSources = [
-      {
-        id: 'medtech-dive',
-        name: 'MedTech Dive Newsletter',
-        type: 'external',
-        status: 'active',
-        subscriberCount: 1250,
-        lastSync: new Date().toISOString(),
-        source: 'medtechdive.com'
-      },
-      {
-        id: 'fda-updates',
-        name: 'FDA Medical Device Updates',
-        type: 'external', 
-        status: 'active',
-        subscriberCount: 890,
-        lastSync: new Date().toISOString(),
-        source: 'fda.gov'
-      },
-      {
-        id: 'ema-newsletter',
-        name: 'EMA Product News',
-        type: 'external',
-        status: 'active', 
-        subscriberCount: 567,
-        lastSync: new Date().toISOString(),
-        source: 'ema.europa.eu'
-      }
-    ];
-
-    const allSources = [...newsletterSources, ...externalSources];
-    
-    console.log(`[Newsletter Sources API] Returning ${allSources.length} newsletter sources`);
-    res.json(allSources);
-
-  } catch (error) {
-    console.error('[Newsletter Sources API] Error:', error);
-    res.status(500).json({ error: 'Failed to fetch newsletter sources' });
-  }
-});
+// Newsletter Sources API route - REMOVED (duplicate in routes.ts)
 
 // Register main routes
 registerRoutes(app);

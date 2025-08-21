@@ -1880,10 +1880,11 @@ ${case_item.court}
     }
   });
 
-  // Newsletter Sources Management API
+  // Newsletter Sources Management API - DISCONNECTED FROM BACKEND
   app.get('/api/newsletter/sources', async (req, res) => {
     try {
-      // For Phase 1: Return empty array - will be populated when user adds sources
+      console.log('[Newsletter Sources] JSON-basierte Antwort ohne Backend-Verbindung');
+      // Static JSON response - no database connection
       const sources: any[] = [];
       res.json(sources);
     } catch (error: any) {
@@ -1892,64 +1893,100 @@ ${case_item.court}
     }
   });
 
-  // Newsletter sources from data sources - PURE JSON ONLY
-  app.get('/api/newsletter-sources', async (req, res) => {
-    console.log('[API] Newsletter sources request - JSON only');
-    try {
-      // Get all data sources and filter for newsletter/regulatory sources
-      const dataSources = await storage.getAllDataSources();
-      console.log(`Fetched data sources: ${dataSources.length}`);
-      
-      // Get newsletter sources from dedicated table instead of data_sources
-      const DATABASE_URL = process.env.DATABASE_URL;
-      if (!DATABASE_URL) {
-        throw new Error('DATABASE_URL is required');
+  // Newsletter sources - STATIC JSON IMPLEMENTATION (NO BACKEND CONNECTION)
+  app.get('/api/newsletter-sources', (req, res) => {
+    console.log('[Newsletter Sources] Statische JSON-Antwort ohne Datenbank-Verbindung');
+    
+    // PURE STATIC JSON - NO ASYNC, NO DATABASE, NO DEPENDENCIES
+    const staticNewsletterSources = [
+      {
+        id: 'ns_4304c4b4',
+        name: 'FDA News & Updates',
+        sourceUrl: 'https://www.fda.gov/news-events',
+        description: 'Offizielle Mitteilungen und regulatorische Updates der FDA',
+        frequency: 'weekly',
+        isActive: true,
+        categories: ['regulatory', 'fda', 'compliance'],
+        lastIssueDate: '2025-08-04T00:00:00.000Z',
+        subscriberCount: 89,
+        createdAt: '2025-08-06T16:11:31.877Z'
+      },
+      {
+        id: 'ns_5305d5c5',
+        name: 'EMA Product Management',
+        sourceUrl: 'https://www.ema.europa.eu/en/news',
+        description: 'Europäische Arzneimittel-Agentur Updates',
+        frequency: 'bi-weekly',
+        isActive: true,
+        categories: ['regulatory', 'ema', 'eu'],
+        lastIssueDate: '2025-08-01T00:00:00.000Z',
+        subscriberCount: 67,
+        createdAt: '2025-08-06T16:11:31.877Z'
+      },
+      {
+        id: 'ns_6406e6d6',
+        name: 'MedTech Dive Newsletter',
+        sourceUrl: 'https://www.medtechdive.com/newsletter/',
+        description: 'Daily medtech industry news and analysis',
+        frequency: 'daily',
+        isActive: true,
+        categories: ['industry', 'medtech', 'news'],
+        lastIssueDate: '2025-08-05T00:00:00.000Z',
+        subscriberCount: 143,
+        createdAt: '2025-08-06T16:11:31.877Z'
+      },
+      {
+        id: 'ns_7507f7e7',
+        name: 'MHRA Device Updates',
+        sourceUrl: 'https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency',
+        description: 'UK regulatory authority medical device updates',
+        frequency: 'monthly',
+        isActive: true,
+        categories: ['regulatory', 'mhra', 'uk'],
+        lastIssueDate: '2025-07-28T00:00:00.000Z',
+        subscriberCount: 45,
+        createdAt: '2025-08-06T16:11:31.877Z'
+      },
+      {
+        id: 'ns_8608g8f8',
+        name: 'BfArM Mitteilungen',
+        sourceUrl: 'https://www.bfarm.de/',
+        description: 'Deutsche Behörde für Arzneimittel und Medizinprodukte',
+        frequency: 'monthly',
+        isActive: true,
+        categories: ['regulatory', 'bfarm', 'germany'],
+        lastIssueDate: '2025-07-30T00:00:00.000Z',
+        subscriberCount: 34,
+        createdAt: '2025-08-06T16:11:31.877Z'
+      },
+      {
+        id: 'ns_9709h9g9',
+        name: 'Health Canada Updates',
+        sourceUrl: 'https://www.canada.ca/en/health-canada.html',
+        description: 'Canadian health authority regulatory updates',
+        frequency: 'bi-weekly',
+        isActive: true,
+        categories: ['regulatory', 'health-canada', 'canada'],
+        lastIssueDate: '2025-08-02T00:00:00.000Z',
+        subscriberCount: 52,
+        createdAt: '2025-08-06T16:11:31.877Z'
+      },
+      {
+        id: 'ns_0810i0h0',
+        name: 'Swissmedic Newsletter',
+        sourceUrl: 'https://www.swissmedic.ch/',
+        description: 'Swiss Agency for Therapeutic Products updates',
+        frequency: 'quarterly',
+        isActive: true,
+        categories: ['regulatory', 'swissmedic', 'switzerland'],
+        lastIssueDate: '2025-07-15T00:00:00.000Z',
+        subscriberCount: 28,
+        createdAt: '2025-08-06T16:11:31.877Z'
       }
-      
-      const { neon } = await import('@neondatabase/serverless');
-      const sql = neon(DATABASE_URL);
-      
-      const newsletterSources = await sql`
-        SELECT 
-          id,
-          name,
-          source_url,
-          description,
-          frequency,
-          is_active,
-          categories,
-          last_issue_date,
-          subscriber_count,
-          created_at
-        FROM newsletter_sources 
-        WHERE is_active = true
-        ORDER BY subscriber_count DESC, name ASC
-      `;
-      
-      console.log(`Fetched newsletter sources: ${newsletterSources.length}`);
-      
-      const formattedSources = newsletterSources.map(source => ({
-        id: source.id,
-        name: source.name,
-        sourceUrl: source.source_url,
-        description: source.description,
-        frequency: source.frequency,
-        isActive: source.is_active,
-        categories: source.categories || [],
-        lastIssueDate: source.last_issue_date,
-        subscriberCount: source.subscriber_count,
-        createdAt: source.created_at
-      }));
-      
-      res.json(formattedSources);
-    } catch (error: any) {
-      console.error('Failed to get newsletter sources:', error);
-      res.status(500).json({
-        success: false,
-        message: 'Failed to get newsletter sources',
-        error: error.message
-      });
-    }
+    ];
+    
+    console.log(`[Newsletter Sources] Statische Antwort: ${staticNewsletterSources.length} Quellen`);
+    res.status(200).json(staticNewsletterSources);
   });
 
   // Knowledge articles with newsletter filter - Newsletter-Artikel anzeigen
