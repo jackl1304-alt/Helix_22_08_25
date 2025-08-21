@@ -1,0 +1,65 @@
+[
+  {
+    "id": "fd5197e3-d11b-436b-b4c4-e2fb75ba7748",
+    "email": "user1@medtech.com",
+    "name": "Dr. Sarah Mueller",
+    "is_active": true,
+    "preferences": null,
+    "subscribed_at": "2025-08-07 09:59:25.59582",
+    "newsletter_ids": null
+  },
+  {
+    "id": "15658509-1bdd-47d1-9c7d-8c0c5c42d3ea",
+    "email": "user2@regulatory.org",
+    "name": "Prof. Michael Schmidt",
+    "is_active": true,
+    "preferences": null,
+    "subscribed_at": "2025-08-07 09:59:25.59582",
+    "newsletter_ids": null
+  },
+  {
+    "id": "22e76f1c-df77-46aa-894e-471a6f97a229",
+    "email": "user3@pharma.de",
+    "name": "Dr. Anna Weber",
+    "is_active": true,
+    "preferences": null,
+    "subscribed_at": "2025-08-07 09:59:25.59582",
+    "newsletter_ids": null
+  },
+  {
+    "id": "b094a342-b26d-4ab2-904f-b1fa95230f51",
+    "email": "user4@biotech.ch",
+    "name": "Thomas Huber",
+    "is_active": true,
+    "preferences": null,
+    "subscribed_at": "2025-08-07 09:59:25.59582",
+    "newsletter_ids": null
+  },
+  {
+    "id": "c133d87d-b26b-419a-b40b-921dd4ef726b",
+    "email": "user5@meddev.at",
+    "name": "Maria Fischer",
+    "is_active": true,
+    "preferences": null,
+    "subscribed_at": "2025-08-07 09:59:25.59582",
+    "newsletter_ids": null
+  },
+  {
+    "id": "75c7a714-cab6-4b4e-8a7a-307e0474135d",
+    "email": "user6@fda.gov",
+    "name": "Regulatory Expert A",
+    "is_active": true,
+    "preferences": null,
+    "subscribed_at": "2025-08-07 09:59:25.59582",
+    "newsletter_ids": null
+  },
+  {
+    "id": "7f5c2f0b-2633-4aff-824a-8bbdf522e6b8",
+    "email": "user7@ema.europa.eu",
+    "name": "Regulatory Expert B",
+    "is_active": true,
+    "preferences": null,
+    "subscribed_at": "2025-08-07 09:59:25.59582",
+    "newsletter_ids": null
+  }
+]
