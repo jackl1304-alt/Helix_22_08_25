@@ -103,8 +103,8 @@ export default function DataCollection() {
       console.log("Frontend: Starting newsletter data refresh");
       
       // Hole aktuelle Newsletter-Daten für echte Zahlen
-      const currentNewsletterSources = (newsletterSources as any)?.sources || [];
-      const activeNewsletterSources = currentNewsletterSources.filter((source: any) => source.status === 'active').length;
+      const currentNewsletterSources = (newsletterSources as any[]) || [];
+      const activeNewsletterSources = currentNewsletterSources.filter((source: any) => source.isActive === true).length;
       
       // Cache-Invalidierung zum Neuladen der Daten
       queryClient.invalidateQueries({ queryKey: ["/api/newsletter-sources"] });
@@ -582,8 +582,8 @@ export default function DataCollection() {
                   </div>
                   <div className="flex items-center gap-2">
                       <div className="text-sm text-blue-700 text-right">
-                        <div className="font-medium">{((newsletterSources as any[]) || []).filter((s: any) => s.type === 'newsletter' && s.is_active !== false).length || 0} aktiv</div>
-                        <div className="text-xs">{((newsletterSources as any[]) || []).filter((s: any) => s.type === 'newsletter').length || 0} gesamt</div>
+                        <div className="font-medium">{((newsletterSources as any[]) || []).filter((s: any) => s.isActive === true).length || 0} aktiv</div>
+                        <div className="text-xs">{((newsletterSources as any[]) || []).length || 0} gesamt</div>
                       </div>
                     <Button
                       size="sm"
@@ -602,9 +602,9 @@ export default function DataCollection() {
                 </div>
               </CardHeader>
               <CardContent>
-                {((newsletterSources as any[]) || []).filter((s: any) => s.type === 'newsletter').length > 0 ? (
+                {((newsletterSources as any[]) || []).length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-96 overflow-y-auto">
-                    {((newsletterSources as any[]) || []).filter((s: any) => s.type === 'newsletter').map((source: any, index: number) => (
+                    {((newsletterSources as any[]) || []).map((source: any, index: number) => (
                       <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg border">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
@@ -612,24 +612,21 @@ export default function DataCollection() {
                               {source.name}
                             </p>
                             <Badge 
-                              variant={source.is_active ? 'default' : 'secondary'}
+                              variant={source.isActive ? 'default' : 'secondary'}
                               className="text-xs"
                             >
-                              {source.is_active ? 'Aktiv' : 'Inaktiv'}
+                              {source.isActive ? 'Aktiv' : 'Inaktiv'}
                             </Badge>
                           </div>
                           <p className="text-xs text-gray-500 truncate">
-                            {source.endpoint}
+                            {source.sourceUrl || source.endpoint}
                           </p>
                           <div className="flex items-center gap-1 mt-1">
                             <Badge variant="outline" className="text-xs px-1">
-                              {source.region}
+                              {source.frequency}
                             </Badge>
                             <Badge variant="outline" className="text-xs px-1">
-                              {source.category === 'news' ? 'News' : 
-                               source.category === 'regulatory' ? 'Regulatorisch' : 
-                               source.category === 'research' ? 'Forschung' :
-                               source.category === 'industry' ? 'Branche' : source.category}
+                              {source.subscriberCount} Abonnenten
                             </Badge>
                           </div>
                         </div>
