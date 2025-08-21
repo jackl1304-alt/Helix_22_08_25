@@ -1,7 +1,7 @@
 
 // Run this script in your Replit environment to export data
 
-import { db } from '../server/db.js';
+import { db } from '../server/db.ts';
 import fs from 'fs';
 import path from 'path';
 
