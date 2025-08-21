@@ -5,12 +5,12 @@ import { db } from '../server/db.ts';
 import fs from 'fs';
 import path from 'path';
 import { 
-  regulatory_updates, 
-  data_sources, 
-  legal_cases, 
+  regulatoryUpdates, 
+  dataSources, 
+  legalCases, 
   newsletters, 
-  newsletter_subscribers, 
-  knowledge_articles 
+  subscribers, 
+  knowledgeArticles 
 } from '../shared/schema.ts';
 
 const exportData = async () => {
@@ -24,21 +24,21 @@ const exportData = async () => {
     
     // Export regulatory updates
     console.log('📤 Exporting regulatory updates...');
-    const regulatoryUpdates = await db.select().from(regulatory_updates);
-    fs.writeFileSync('regulatory_updates_export.json', JSON.stringify(regulatoryUpdates, null, 2));
-    console.log(`✅ Exported ${regulatoryUpdates.length} regulatory updates`);
+    const regulatoryUpdatesData = await db.select().from(regulatoryUpdates);
+    fs.writeFileSync('regulatory_updates_export.json', JSON.stringify(regulatoryUpdatesData, null, 2));
+    console.log(`✅ Exported ${regulatoryUpdatesData.length} regulatory updates`);
     
     // Export data sources
     console.log('📤 Exporting data sources...');
-    const dataSources = await db.select().from(data_sources);
-    fs.writeFileSync('data_sources_export.json', JSON.stringify(dataSources, null, 2));
-    console.log(`✅ Exported ${dataSources.length} data sources`);
+    const dataSourcesData = await db.select().from(dataSources);
+    fs.writeFileSync('data_sources_export.json', JSON.stringify(dataSourcesData, null, 2));
+    console.log(`✅ Exported ${dataSourcesData.length} data sources`);
     
     // Export legal cases
     console.log('📤 Exporting legal cases...');
-    const legalCases = await db.select().from(legal_cases);
-    fs.writeFileSync('legal_cases_export.json', JSON.stringify(legalCases, null, 2));
-    console.log(`✅ Exported ${legalCases.length} legal cases`);
+    const legalCasesData = await db.select().from(legalCases);
+    fs.writeFileSync('legal_cases_export.json', JSON.stringify(legalCasesData, null, 2));
+    console.log(`✅ Exported ${legalCasesData.length} legal cases`);
     
     // Export newsletters
     console.log('📤 Exporting newsletters...');
@@ -48,13 +48,13 @@ const exportData = async () => {
     
     // Export newsletter subscribers
     console.log('📤 Exporting newsletter subscribers...');
-    const subscribers = await db.select().from(newsletter_subscribers);
-    fs.writeFileSync('newsletter_subscribers_export.json', JSON.stringify(subscribers, null, 2));
-    console.log(`✅ Exported ${subscribers.length} subscribers`);
+    const subscribersData = await db.select().from(subscribers);
+    fs.writeFileSync('newsletter_subscribers_export.json', JSON.stringify(subscribersData, null, 2));
+    console.log(`✅ Exported ${subscribersData.length} subscribers`);
     
     // Export knowledge articles
     console.log('📤 Exporting knowledge articles...');
-    const knowledgeArticlesData = await db.select().from(knowledge_articles);
+    const knowledgeArticlesData = await db.select().from(knowledgeArticles);
     fs.writeFileSync('knowledge_articles_export.json', JSON.stringify(knowledgeArticlesData, null, 2));
     console.log(`✅ Exported ${knowledgeArticlesData.length} knowledge articles`);
     
