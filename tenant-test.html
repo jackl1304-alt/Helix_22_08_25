@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix Tenant Dashboard Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="gradient-bg text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <h1 class="text-3xl font-bold">🔬 Helix Regulatory Intelligence</h1>
+                <p class="text-blue-100 mt-2">Demo Medical Corp - Professional Plan</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8">
+            <!-- Status Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-sm card-hover p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-blue-100 rounded-full">
+                            <span class="text-2xl">📋</span>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-gray-600 text-sm">Updates</h3>
+                            <p class="text-2xl font-bold text-gray-800" id="updates-count">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm card-hover p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-green-100 rounded-full">
+                            <span class="text-2xl">⚖️</span>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-gray-600 text-sm">Legal Cases</h3>
+                            <p class="text-2xl font-bold text-gray-800" id="cases-count">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm card-hover p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-purple-100 rounded-full">
+                            <span class="text-2xl">🔗</span>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-gray-600 text-sm">Data Sources</h3>
+                            <p class="text-2xl font-bold text-gray-800" id="sources-count">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm card-hover p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-orange-100 rounded-full">
+                            <span class="text-2xl">📊</span>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-gray-600 text-sm">Usage</h3>
+                            <p class="text-xl font-bold text-gray-800" id="usage-display">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Updates -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">📈 Recent Regulatory Updates</h2>
+                <div id="updates-list" class="space-y-3">
+                    <div class="animate-pulse">
+                        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                        <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load tenant data
+        async function loadTenantData() {
+            try {
+                // Load tenant context
+                const contextResponse = await fetch('/api/tenant/context');
+                const context = await contextResponse.json();
+                console.log('Tenant Context:', context);
+
+                // Load dashboard stats
+                const statsResponse = await fetch('/api/tenant/dashboard/stats');
+                const stats = await statsResponse.json();
+                console.log('Dashboard Stats:', stats);
+
+                // Update UI
+                document.getElementById('updates-count').textContent = stats.totalUpdates || 0;
+                document.getElementById('cases-count').textContent = stats.totalLegalCases || 0;
+                document.getElementById('sources-count').textContent = stats.activeDataSources || 0;
+                document.getElementById('usage-display').textContent = `${stats.monthlyUsage || 0}/${stats.usageLimit || 200}`;
+
+                // Load recent updates
+                const updatesResponse = await fetch('/api/tenant/regulatory-updates');
+                const updates = await updatesResponse.json();
+                console.log('Updates:', updates);
+
+                const updatesList = document.getElementById('updates-list');
+                updatesList.innerHTML = '';
+
+                if (updates && updates.length > 0) {
+                    updates.slice(0, 5).forEach(update => {
+                        const updateDiv = document.createElement('div');
+                        updateDiv.className = 'border-l-4 border-blue-500 pl-4 py-2';
+                        updateDiv.innerHTML = `
+                            <h3 class="font-semibold text-gray-800">${update.title}</h3>
+                            <p class="text-gray-600 text-sm">${update.summary || 'No summary available'}</p>
+                            <p class="text-xs text-gray-500 mt-1">Source: ${update.source} | ${new Date(update.publishedAt || update.createdAt).toLocaleDateString('de-DE')}</p>
+                        `;
+                        updatesList.appendChild(updateDiv);
+                    });
+                } else {
+                    updatesList.innerHTML = '<p class="text-gray-500">No recent updates available</p>';
+                }
+
+            } catch (error) {
+                console.error('Error loading tenant data:', error);
+                document.getElementById('updates-list').innerHTML = '<p class="text-red-500">Error loading data</p>';
+            }
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadTenantData);
+    </script>
+</body>
+</html>

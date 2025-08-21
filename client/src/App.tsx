@@ -69,6 +69,7 @@ const GRIPIntegration = lazy(() => import("@/pages/grip-integration"));
 // Multi-Tenant Components
 const TenantDashboard = lazy(() => import("@/pages/tenant-dashboard"));
 const TenantAuth = lazy(() => import("@/pages/tenant-auth"));
+const TenantComplete = lazy(() => import("@/pages/tenant-complete"));
 
 // Loading fallback component
 const LoadingFallback = () => (
@@ -129,6 +130,7 @@ function Router() {
         {/* Tenant Routes - Isolated Dashboard Access */}
         <Route path="/tenant/auth" component={TenantAuth} />
         <Route path="/tenant/dashboard" component={TenantDashboard} />
+        <Route path="/tenant" component={TenantComplete} />
         <Route path="/tenant/*" component={TenantDashboard} />
         
         {/* Fallback to 404 */}
