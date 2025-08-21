@@ -13,14 +13,12 @@ const exportData = async () => {
     // Try to get data using the existing storage functions
     console.log('📤 Attempting to export using storage functions...');
     
-    // Import storage functions
-    const { MorningStorage } = await import('../server/storage.ts');
-    const storage = new MorningStorage();
+    // Use direct database queries instead of storage class
     
     // Export regulatory updates
     console.log('📤 Exporting regulatory updates...');
     try {
-      const regulatoryUpdatesData = await storage.getAllRegulatoryUpdates();
+      const regulatoryUpdatesData = await db.query.regulatoryUpdates.findMany();
       fs.writeFileSync('regulatory_updates_export.json', JSON.stringify(regulatoryUpdatesData, null, 2));
       console.log(`✅ Exported ${regulatoryUpdatesData.length} regulatory updates`);
     } catch (error) {

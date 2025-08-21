@@ -1,0 +1,10 @@
+[
+  {
+    "id": "1",
+    "email": "admin@helix.com",
+    "name": "System Administrator",
+    "role": "admin",
+    "is_active": true,
+    "created_at": "2025-08-21T18:48:01.165Z"
+  }
+]
