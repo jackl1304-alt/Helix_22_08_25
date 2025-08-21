@@ -13,7 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import { 
   Clock, Plus, Search, Calendar, AlertCircle, CheckCircle, 
   FileText, Building2, Globe, Zap, Users, Flag, Edit, Trash2,
-  TrendingUp, DollarSign, Target, BarChart3, Shield, Scale
+  TrendingUp, DollarSign, Target, BarChart3, Shield, Scale, ExternalLink
 } from 'lucide-react';
 
 interface OngoingApproval {
@@ -34,6 +34,12 @@ interface OngoingApproval {
   nextSteps: string[];
   contactPerson: string;
   priority: 'low' | 'medium' | 'high' | 'critical';
+  sources: {
+    name: string;
+    url: string;
+    type: 'official' | 'guidance' | 'reference' | 'documentation';
+    description?: string;
+  }[];
 }
 
 export default function LaufendeZulassungen() {
@@ -44,7 +50,8 @@ export default function LaufendeZulassungen() {
   const [newApproval, setNewApproval] = useState<Partial<OngoingApproval>>({
     status: 'submitted',
     priority: 'medium',
-    progressPercentage: 0
+    progressPercentage: 0,
+    sources: []
   });
 
   const { toast } = useToast();
@@ -83,7 +90,27 @@ export default function LaufendeZulassungen() {
             'Erweiterte klinische Validierung einreichen'
           ],
           contactPerson: 'Dr. Sarah Weber - Regulatory Affairs',
-          priority: 'high'
+          priority: 'high',
+          sources: [
+            {
+              name: 'EMA MDR Guidelines',
+              url: 'https://www.ema.europa.eu/en/human-regulatory/overview/medical-devices',
+              type: 'official',
+              description: 'Official EMA guidance for MDR compliance'
+            },
+            {
+              name: 'TÜV SÜD Notified Body',
+              url: 'https://www.tuvsud.com/en/services/product-certification/medical-devices',
+              type: 'official',
+              description: 'Notified Body certification process'
+            },
+            {
+              name: 'AI in Medical Devices Guidance',
+              url: 'https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/artificial-intelligence-machine-learning-regulatory-framework-medical-devices_en.pdf',
+              type: 'guidance',
+              description: 'EMA guidance on AI/ML in medical devices'
+            }
+          ]
         },
         {
           id: 'app-002',
@@ -113,7 +140,33 @@ export default function LaufendeZulassungen() {
             'Advisory Panel Meeting vorbereiten'
           ],
           contactPerson: 'Mark Johnson - VP Regulatory',
-          priority: 'critical'
+          priority: 'critical',
+          sources: [
+            {
+              name: 'FDA PMA Guidelines',
+              url: 'https://www.fda.gov/medical-devices/premarket-approval-pma/pma-approvals',
+              type: 'official',
+              description: 'Official FDA PMA approval process'
+            },
+            {
+              name: 'Class III Medical Device Guidance',
+              url: 'https://www.fda.gov/medical-devices/classify-your-medical-device/class-iii-medical-devices',
+              type: 'guidance',
+              description: 'FDA guidance for Class III devices'
+            },
+            {
+              name: 'FDA Advisory Panel Meetings',
+              url: 'https://www.fda.gov/advisory-committees/medical-devices-advisory-committee',
+              type: 'reference',
+              description: 'Information on FDA advisory panel process'
+            },
+            {
+              name: 'IDE Study Requirements',
+              url: 'https://www.fda.gov/medical-devices/investigational-device-exemption-ide/investigational-device-exemption-ide-guidance',
+              type: 'guidance',
+              description: 'FDA IDE study guidance'
+            }
+          ]
         },
         {
           id: 'app-003',
@@ -143,7 +196,27 @@ export default function LaufendeZulassungen() {
             'Lokale Klinik-Kooperationen etablieren'
           ],
           contactPerson: 'Hiroshi Tanaka - Japan Representative',
-          priority: 'medium'
+          priority: 'medium',
+          sources: [
+            {
+              name: 'PMDA Medical Device Guidelines',
+              url: 'https://www.pmda.go.jp/english/review-services/outline/devices/0002.html',
+              type: 'official',
+              description: 'Official PMDA medical device approval process'
+            },
+            {
+              name: 'JIS Medical Device Standards',
+              url: 'https://www.jisc.go.jp/eng/index.html',
+              type: 'reference',
+              description: 'Japanese Industrial Standards for medical devices'
+            },
+            {
+              name: 'PMDA English Page',
+              url: 'https://www.pmda.go.jp/english/',
+              type: 'official',
+              description: 'PMDA official English resources'
+            }
+          ]
         },
         {
           id: 'app-004',
@@ -173,7 +246,27 @@ export default function LaufendeZulassungen() {
             'Distribution Agreement abschließen'
           ],
           contactPerson: 'Li Wei - China Operations',
-          priority: 'high'
+          priority: 'high',
+          sources: [
+            {
+              name: 'NMPA Medical Device Registration',
+              url: 'https://www.nmpa.gov.cn/eng/',
+              type: 'official',
+              description: 'Official NMPA registration procedures'
+            },
+            {
+              name: 'China Medical Device Guidelines',
+              url: 'https://www.nmpa.gov.cn/directory/web/nmpa/images/1633599698574095238.pdf',
+              type: 'guidance',
+              description: 'NMPA medical device regulatory guidance'
+            },
+            {
+              name: 'AI Medical Device Guidance China',
+              url: 'https://www.nmpa.gov.cn/yaopin/ypggtg/ypqxgg/20190701171901460.html',
+              type: 'guidance',
+              description: 'NMPA guidance on AI medical devices'
+            }
+          ]
         },
         {
           id: 'app-005',
@@ -205,7 +298,33 @@ export default function LaufendeZulassungen() {
             'Post-Market Update Prozess definieren'
           ],
           contactPerson: 'Dr. Michael Rodriguez - Cybersecurity Lead',
-          priority: 'critical'
+          priority: 'critical',
+          sources: [
+            {
+              name: 'FDA Cybersecurity Section 524B',
+              url: 'https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity',
+              type: 'official',
+              description: 'FDA cybersecurity requirements for medical devices'
+            },
+            {
+              name: 'SBOM Guidelines FDA',
+              url: 'https://www.fda.gov/medical-devices/software-medical-device-samd/software-bill-materials-sbom-medical-device-cybersecurity',
+              type: 'guidance',
+              description: 'FDA guidance on Software Bill of Materials'
+            },
+            {
+              name: 'Medical Device Cybersecurity Guidance',
+              url: 'https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cybersecurity-medical-devices-quality-system-considerations-and-content-premarket-submissions',
+              type: 'guidance',
+              description: 'Comprehensive FDA cybersecurity guidance'
+            },
+            {
+              name: 'NIST Cybersecurity Framework',
+              url: 'https://www.nist.gov/cyberframework',
+              type: 'reference',
+              description: 'NIST framework referenced by FDA cybersecurity guidance'
+            }
+          ]
         }
       ];
     }
@@ -563,6 +682,7 @@ export default function LaufendeZulassungen() {
                   <TabsTrigger value="overview">Übersicht</TabsTrigger>
                   <TabsTrigger value="milestones">Meilensteine</TabsTrigger>
                   <TabsTrigger value="challenges">Herausforderungen</TabsTrigger>
+                  <TabsTrigger value="sources">Quellen ({approval.sources.length})</TabsTrigger>
                   <TabsTrigger value="details">Details</TabsTrigger>
                 </TabsList>
 
@@ -605,6 +725,12 @@ export default function LaufendeZulassungen() {
                         <div className="flex justify-between">
                           <span className="text-gray-500">Behörde:</span>
                           <span>{approval.regulatoryBody}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Verfügbare Quellen:</span>
+                          <span className="font-medium text-blue-600">
+                            {approval.sources.length} Referenzen
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -660,6 +786,66 @@ export default function LaufendeZulassungen() {
                       </div>
                     </div>
                   </div>
+                </TabsContent>
+
+                <TabsContent value="sources" className="p-4">
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
+                    <ExternalLink className="w-4 h-4 text-blue-500" />
+                    Verfügbare Quellen und Referenzen
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {approval.sources.map((source, idx) => (
+                      <Card key={idx} className="border-l-4 border-l-blue-500">
+                        <CardContent className="p-4">
+                          <div className="flex items-start justify-between mb-2">
+                            <div className="flex-1">
+                              <h5 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+                                {source.name}
+                              </h5>
+                              <div className="flex items-center gap-2 mb-2">
+                                <Badge 
+                                  variant={source.type === 'official' ? 'default' : 
+                                          source.type === 'guidance' ? 'secondary' : 'outline'}
+                                  className="text-xs"
+                                >
+                                  {source.type === 'official' ? 'Offiziell' :
+                                   source.type === 'guidance' ? 'Leitfaden' :
+                                   source.type === 'reference' ? 'Referenz' : 'Dokumentation'}
+                                </Badge>
+                              </div>
+                              {source.description && (
+                                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                                  {source.description}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full"
+                            data-testid={`source-link-${idx}`}
+                            onClick={() => window.open(source.url, '_blank')}
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            Quelle öffnen
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                  
+                  {approval.sources.length === 0 && (
+                    <div className="text-center py-8">
+                      <ExternalLink className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                      <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+                        Keine Quellen verfügbar
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        Für diese Zulassung wurden noch keine Quellen hinterlegt.
+                      </p>
+                    </div>
+                  )}
                 </TabsContent>
 
                 <TabsContent value="details" className="p-4">
