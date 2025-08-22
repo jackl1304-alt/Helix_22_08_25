@@ -4,7 +4,7 @@ module.exports = {
     name: 'helix-regulatory',
     script: '/var/www/helix/server/index.js',
     cwd: '/var/www/helix',
-    instances: 2,
+    instances: 'max',
     exec_mode: 'cluster',
     env: {
       NODE_ENV: 'production',
